@@ -32,46 +32,30 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Login extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = "LoginActivity";
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+    private static final String TAG = "RegisterActivity";
     private DatabaseReference mDatabase;
-    private Button googleSignInButton;
-    private GoogleSignInClient googleSignInClient;
 
     private TextView labelAplikasi;
     private TextView labelAuthor;
+    EditText txtName;
     EditText txtUsername;
     EditText txtPassword;
-    Button btnLogin;
-    private TextView btnRegister;
+    Button btnRegister;
+    private TextView btnLogin;
     ProgressDialog loadingProgress;
     SessionManager session;
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         session = new SessionManager(getApplicationContext());
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
-        googleSignInButton = findViewById(R.id.sign_in_button);
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
-        googleSignInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = googleSignInClient.getSignInIntent();
-                loadingProgress.setMessage("Harap menunggu...");
-                loadingProgress.show();
-                startActivityForResult(signInIntent, 101);
-            }
-        });
 
         labelAplikasi = findViewById(R.id.labelAplikasi);
         labelAuthor = findViewById(R.id.labelAuthor);
@@ -80,12 +64,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         labelAplikasi.setTypeface(arabianFont);
         labelAuthor.setTypeface(pacificoFont);
-        btnLogin = (Button)findViewById(R.id.btnLogin);
-        btnRegister = (TextView)findViewById(R.id.btnRegister);
+        btnRegister = (Button)findViewById(R.id.btnRegister);
+        btnLogin = (TextView)findViewById(R.id.btnLogin);
 
+        txtName = (EditText) findViewById(R.id.txtName);
         txtUsername = (EditText) findViewById(R.id.txtUsername);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
-        loadingProgress = new ProgressDialog(Login.this);
+        loadingProgress = new ProgressDialog(RegisterActivity.this);
 
         //nambahin method onClick, biar tombolnya bisa diklik
         btnLogin.setOnClickListener(this);
@@ -93,45 +78,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     }
 
     //fungsi signin untuk mengkonfirmasi data pengguna yang sudah mendaftar sebelumnya
-    private void signIn() {
-        Log.d(TAG, "signIn");
-        if (!validateForm()) {
-            return;
-        }
-
-        loadingProgress.setMessage("Harap menunggu...");
-        loadingProgress.show();
-        String email = txtUsername.getText().toString();
-        String password = txtPassword.getText().toString();
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signIn:onComplete:" + task.isSuccessful());
-                        loadingProgress.dismiss();
-                        try {
-                            if (task.isSuccessful()) {
-                                onAuthSuccess(task.getResult().getUser());
-                            } else {
-                                String message = task.getException().getMessage();
-                                Toast.makeText(Login.this, "Login Failed: " + message,
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        catch (Exception ex){
-                            String message = ex.getLocalizedMessage();
-                            if (message.contains(":")) {
-                                message = message.split(":")[1];
-                            }
-                            Toast.makeText(Login.this, "Login Failed: " + message,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-    }
-
     //fungsi ini untuk mendaftarkan data pengguna ke Firebase
     private void signUp() {
         Log.d(TAG, "signUp");
@@ -141,6 +87,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         loadingProgress.setMessage("Harap menunggu...");
         loadingProgress.show();
         //showProgressDialog();
+        String name = txtName.getText().toString();
         String email = txtUsername.getText().toString();
         String password = txtPassword.getText().toString();
 
@@ -156,7 +103,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             } else {
                                 String message = task.getException().getMessage();
                                 AuthResult result = task.getResult();
-                                Toast.makeText(Login.this, "Register failed: " + message,
+                                Toast.makeText(RegisterActivity.this, "Register failed: " + message,
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -165,7 +112,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             if (message.contains(":")) {
                                 message = message.split(":")[1];
                             }
-                            Toast.makeText(Login.this, "Register failed: " + message,
+                            Toast.makeText(RegisterActivity.this, "Register failed: " + message,
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -173,16 +120,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 });
     }
 
+    private String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
+        }
+    }
+
     //fungsi dipanggil ketika proses Authentikasi berhasil
     private void onAuthSuccess(FirebaseUser user) {
-        String username = usernameFromEmail(user.getEmail());
+        String fullName = txtName.getText().toString();
+        String userName = usernameFromEmail(txtUsername.getText().toString());
 
         // membuat User admin baru
-        //writeNewAdmin(user.getUid(), username, user.getEmail());
+        writeNewAdmin(user.getUid(), userName, user.getEmail(), fullName);
 
         // Go to MainActivity
-        session.createLoginSession(username, "Basic");
-        Intent intent = new Intent(Login.this, MainActivity.class);
+        session.createLoginSession(userName, "Basic");
+        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -192,17 +148,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             contoh email: abcdefg@mail.com
             maka username nya: abcdefg
      */
-    private String usernameFromEmail(String email) {
-        if (email.contains("@")) {
-            return email.split("@")[0];
-        } else {
-            return email;
-        }
-    }
 
     //fungsi untuk memvalidasi EditText email dan password agar tak kosong dan sesuai format
     private boolean validateForm() {
         boolean result = true;
+        if (TextUtils.isEmpty(txtName.getText().toString())) {
+            txtName.setError("Harap mengisi Nama!");
+            result = false;
+        } else {
+            txtName.setError(null);
+        }
+
         if (TextUtils.isEmpty(txtUsername.getText().toString())) {
             txtUsername.setError("Harap mengisi Email!");
             result = false;
@@ -226,8 +182,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     }
 
     // menulis ke Database
-    private void writeNewAdmin(String userId, String name, String email) {
-        User user = new User(name, email, "");
+    private void writeNewAdmin(String userId, String userName, String email, String fullName) {
+        User user = new User(userName, email, fullName);
+
         mDatabase.child("user").child(userId).setValue(user);
     }
 
@@ -235,11 +192,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btnLogin) {
-            signIn();
+            Intent intent = new Intent(RegisterActivity.this, Login.class);
+            startActivity(intent);
+            finish();
         }
         else if (i == R.id.btnRegister) {
-            Intent intent = new Intent(Login.this, RegisterActivity.class);
-            startActivity(intent);
+            signUp();
         }
     }
 
@@ -267,7 +225,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private void onLoggedIn(GoogleSignInAccount googleSignInAccount) {
         String userName = googleSignInAccount.getGivenName();
         session.createLoginSession(userName, "Google");
-        Intent intent = new Intent(Login.this, MainActivity.class);
+        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -284,7 +242,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void onBackPressed() {
-        //do nothing
+        Intent intent = new Intent(RegisterActivity.this, Login.class);
+        startActivity(intent);
         finish();
     }
 }

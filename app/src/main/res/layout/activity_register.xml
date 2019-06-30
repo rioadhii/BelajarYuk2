@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login" >
+    tools:context=".RegisterActivity" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -47,12 +47,29 @@
             android:background="@color/colorWhite"
             android:orientation="vertical">
 
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
+                android:hint="Full Name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="30dp"
                 android:hint="Email">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -80,27 +97,17 @@
 
 
             <Button
-                android:id="@+id/btnLogin"
-                android:theme="@style/AppTheme.Button"
+                android:id="@+id/btnRegister"
+                android:theme="@style/AppTheme.ButtonBlue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
-                android:text="Login"
+                android:text="Register"
                 android:textAllCaps="false"/>
 
-            <com.shobhitpuri.custombuttons.GoogleSignInButton
-                android:id="@+id/sign_in_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-
-                android:layout_marginTop="10dp"
-
-                android:text="@string/google_sign_in" />
-
             <TextView
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
@@ -108,8 +115,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:clickable="true"
-                android:text="Belum punya Akun ?"
-                android:textColor="@color/link"
+                android:text="Sudah punya Akun ?"
+                android:textColor="@color/colorOrange"
                 android:textSize="12dp"/>
 
             <TextView
