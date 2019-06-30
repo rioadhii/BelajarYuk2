@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+
+import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import androidx.core.content.res.ResourcesCompat;
@@ -20,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,8 @@ public class MateriActivity extends AppCompatActivity {
     private String matapelajaran;
     private TextView labelActivity;
     private TextView labelActivityDescription;
+
+    private FirebaseListAdapter<SubKategori> fbAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +67,33 @@ public class MateriActivity extends AppCompatActivity {
 
         switch (matapelajaran){
                 case "Bahasa Indonesia":
+
+                    /*fbAdapter = new FirebaseListAdapter<SubKategori>(this, SubKategori.class,
+                            R.layout.activity_materi, FirebaseDatabase.getInstance().getReference()) {
+                        @Override
+                        protected void populateView(View v, SubKategori model, int position) {
+                            int[] covers = new int[]{
+                                    R.drawable.lecturer,
+                                    R.drawable.bahasaindonesia};
+
+                            MateriList data = new MateriList(
+                                    model.getKategori_name(),
+                                    "Paragraf",
+                                    "Bahasa Indonesia",
+                                    "Ide pokok adalah masalah utama ",
+                                    covers[1],
+                                    covers[0],
+                                    "BI001",
+                                    "");
+
+                            materiList.add(data);
+                        }
+                    };
+
+                    adapter.notifyDataSetChanged();
+*/
                     prepareMateriBahasaIndonesia();
+                    //displayChatMessages();
                     break;
                 case "Pengetahuan Alam":
                     prepareMateriPengetahuanAlam();
