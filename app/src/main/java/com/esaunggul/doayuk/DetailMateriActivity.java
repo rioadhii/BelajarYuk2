@@ -1,0 +1,146 @@
+package com.esaunggul.doayuk;
+
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Build;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+public class DetailMateriActivity extends AppCompatActivity {
+
+    private String mata_pelajaran;
+    private String kode_materi;
+    private String judul_materi;
+    private String topik;
+    private String konten;
+    private Integer thumbnail;
+    private Integer cover;
+
+    private TextView labelActivity;
+    private TextView labelKategori;
+    private TextView labelTopik;
+    private TextView labelKonten;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_materi);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        initCollapsingToolbar();
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        mata_pelajaran = extras.getString("PARAM_PELAJARAN");
+        kode_materi = extras.getString("PARAM_KODE_MATERI");
+        judul_materi = extras.getString("PARAM_JUDUL_MATERI");
+        topik = extras.getString("PARAM_TOPIK");
+        cover = extras.getInt("PARAM_COVER");
+        thumbnail = extras.getInt("PARAM_THUMBNAIL");
+        konten = extras.getString("PARAM_KONTEN");
+
+        labelKategori = findViewById(R.id.kategori);
+        labelTopik = findViewById(R.id.topik);
+        labelActivity = findViewById(R.id.labelActivity);
+        labelKonten = findViewById(R.id.konten);
+
+        labelActivity.setText(judul_materi);
+        labelKategori.setText(mata_pelajaran);
+        labelTopik.setText(topik);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            labelKonten.setText(Html.fromHtml(konten, Html.FROM_HTML_MODE_COMPACT));
+        } else {
+            labelKonten.setText(Html.fromHtml(konten));
+        }
+
+        try {
+            Glide.with(this).load(thumbnail).into((ImageView) findViewById(R.id.photo));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Glide.with(this).load(cover).into((ImageView) findViewById(R.id.backdrop));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Typeface pacificoFont = ResourcesCompat.getFont(this.getApplicationContext(), R.font.pacifico);
+        labelActivity.setTypeface(pacificoFont);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Bundle extras = new Bundle();
+                Intent intent = new Intent(this, MateriActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                extras.putString("PARAM_PELAJARAN", mata_pelajaran);
+                intent.putExtras(extras);
+                startActivity(intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Bundle extras = new Bundle();
+        Intent intent = new Intent(this, MateriActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        extras.putString("PARAM_PELAJARAN", mata_pelajaran);
+        intent.putExtras(extras);
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * Initializing collapsing toolbar
+     * Will show and hide the toolbar title on scroll
+     */
+    private void initCollapsingToolbar() {
+        final CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle(" ");
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        appBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded & collapsed
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbar.setTitle("Detail Materi");
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbar.setTitle(" ");
+                    isShow = false;
+                }
+            }
+        });
+    }
+}

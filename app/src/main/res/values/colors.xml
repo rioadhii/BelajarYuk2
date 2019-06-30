@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#29b6f6</color>
+    <color name="colorPrimaryDark">#0086c3</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorOrange">#ff9100</color>
+    <color name="colorTitle">#4c4c4c</color>
+    <color name="colorViewBg">#f1f5f8</color>
+    <color name="colorGreen">#4caf50</color>
+
+    <color name="white">#ffffff</color>
+    <color name="feed_bg">#d3d6db</color>
+    <color name="feed_item_bg">#ffffff</color>
+    <color name="feed_item_border">#c2c3c8</color>
+    <color name="link">#0a80d1</color>
+    <color name="timestamp">#a0a3a7</color>
+
+    <color name="ipa">#00507f</color>
+    <color name="bahasaindonesia">#ef4136</color>
+    <color name="matematika">#29b298</color>
+    <color name="bahasainggirs">#987e31</color>
+</resources>
