@@ -20,11 +20,9 @@ import cn.refactor.lib.colordialog.ColorDialog;
 
 public class JadwalActivity extends AppCompatActivity {
     private TextView labelActivity;
-    private TextView LabelActivityDescription;
 
     private long mLastClickTime = 0;
 
-    private TextView labelActivityDescription;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,88 +33,14 @@ public class JadwalActivity extends AppCompatActivity {
 
         initCollapsingToolbar();
         labelActivity = findViewById(R.id.labelActivity);
-        LabelActivityDescription = findViewById(R.id.labelActivityDescription);
-        Typeface pacificoFont = ResourcesCompat.getFont(this.getApplicationContext(), R.font.pacifico);
-        labelActivity.setTypeface(pacificoFont);
-        LabelActivityDescription.setTypeface(pacificoFont);
+        Typeface arabianFont = ResourcesCompat.getFont(this.getApplicationContext(), R.font.arabianonenightstand);
+        labelActivity.setTypeface(arabianFont);
         try {
-            Glide.with(this).load(R.drawable.jadwalujianlogo).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.sujood).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-    }
-
-    public void onBahasaIndonesiaClick(View view){
-        // mis-clicking prevention, using threshold of 1000 ms
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
-            return;
-        }
-        mLastClickTime = SystemClock.elapsedRealtime();
-
-        ColorDialog dialog = new ColorDialog(this);
-        dialog.setTitle("Senin");
-        dialog.setContentText("Mata Pelajaran : Bahasa Indonesia\nTanggal : 1 April 2019\nJam : 09.00 WIB - 12.00 WIB");
-        dialog.setColor("#90b06e");
-        dialog.setNegativeListener("Tutup", new ColorDialog.OnNegativeListener() {
-                    @Override
-                    public void onClick(ColorDialog dialog) {
-                        dialog.dismiss();
-                    }}).show();
-    }
-
-    public void onIPAClick(View view){
-        // mis-clicking prevention, using threshold of 1000 ms
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
-            return;
-        }
-        mLastClickTime = SystemClock.elapsedRealtime();
-
-        ColorDialog dialog = new ColorDialog(this);
-        dialog.setTitle("Rabu");
-        dialog.setContentText("Mata Pelajaran : Pengetahuan Alam\nTanggal : 3 April 2019\nJam : 09.00 WIB - 12.00 WIB");
-        dialog.setColor("#79b3e4");
-        dialog.setNegativeListener("Tutup", new ColorDialog.OnNegativeListener() {
-            @Override
-            public void onClick(ColorDialog dialog) {
-                dialog.dismiss();
-            }}).show();
-    }
-
-    public void onMatematikaClick(View view){
-        // mis-clicking prevention, using threshold of 1000 ms
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
-            return;
-        }
-        mLastClickTime = SystemClock.elapsedRealtime();
-
-        ColorDialog dialog = new ColorDialog(this);
-        dialog.setTitle("Selasa");
-        dialog.setContentText("Mata Pelajaran : Matematika\nTanggal : 2 April 2019\nJam : 09.00 WIB - 12.00 WIB");
-        dialog.setColor("#e8bd4b");
-        dialog.setNegativeListener("Tutup", new ColorDialog.OnNegativeListener() {
-            @Override
-            public void onClick(ColorDialog dialog) {
-                dialog.dismiss();
-            }}).show();
-    }
-
-    public void onBahasaInggrisClick(View view){
-        // mis-clicking prevention, using threshold of 1000 ms
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
-            return;
-        }
-        mLastClickTime = SystemClock.elapsedRealtime();
-
-        ColorDialog dialog = new ColorDialog(this);
-        dialog.setTitle("Kamis");
-        dialog.setContentText("Mata Pelajaran : Bahasa Inggris\nTanggal : 4 April 2019\nJam : 09.00 WIB - 12.00 WIB");
-        dialog.setColor("#ed7861");
-        dialog.setNegativeListener("Tutup", new ColorDialog.OnNegativeListener() {
-            @Override
-            public void onClick(ColorDialog dialog) {
-                dialog.dismiss();
-            }}).show();
     }
 
     @Override
@@ -157,16 +81,8 @@ public class JadwalActivity extends AppCompatActivity {
 
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle("Jadwal Ujian");
-                    isShow = true;
-                } else if (isShow) {
                     collapsingToolbar.setTitle(" ");
                     isShow = false;
-                }
             }
         });
     }

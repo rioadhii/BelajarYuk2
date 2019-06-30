@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             } else {
                                 String message = task.getException().getMessage();
                                 AuthResult result = task.getResult();
-                                Toast.makeText(RegisterActivity.this, "Register failed: " + message,
+                                Toast.makeText(RegisterActivity.this, "Gagal mendaftar: " + message,
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -112,7 +112,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             if (message.contains(":")) {
                                 message = message.split(":")[1];
                             }
-                            Toast.makeText(RegisterActivity.this, "Register failed: " + message,
+                            Toast.makeText(RegisterActivity.this, "Gagal mendaftar: " + message,
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -160,14 +160,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
         if (TextUtils.isEmpty(txtUsername.getText().toString())) {
-            txtUsername.setError("Harap mengisi Email!");
+            txtUsername.setError("Harap mengisi Alamat Email!");
             result = false;
         } else {
             txtUsername.setError(null);
         }
 
         if (TextUtils.isEmpty(txtPassword.getText().toString())) {
-            txtPassword.setError("Harap mengisi password!");
+            txtPassword.setError("Harap mengisi Kata Sandi!");
             result = false;
         }
         else if(txtPassword.getText().toString().length() < 6){

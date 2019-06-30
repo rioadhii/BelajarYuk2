@@ -53,7 +53,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
-                android:hint="Email">
+                android:hint="Alamat Email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtUsername"
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginHorizontal="30dp"
-                android:hint="Password">
+                android:hint="Kata Sandi">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtPassword"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
-                android:text="Login"
+                android:text="Masuk"
                 android:textAllCaps="false"/>
 
             <com.shobhitpuri.custombuttons.GoogleSignInButton
@@ -94,10 +94,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
-
                 android:layout_marginTop="10dp"
-
-                android:text="@string/google_sign_in" />
+                android:text="Masuk dengan Google" />
 
             <TextView
                 android:id="@+id/btnRegister"

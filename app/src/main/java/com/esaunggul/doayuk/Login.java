@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                                 onAuthSuccess(task.getResult().getUser());
                             } else {
                                 String message = task.getException().getMessage();
-                                Toast.makeText(Login.this, "Login Failed: " + message,
+                                Toast.makeText(Login.this, "Gagal masuk: " + message,
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -124,48 +124,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             if (message.contains(":")) {
                                 message = message.split(":")[1];
                             }
-                            Toast.makeText(Login.this, "Login Failed: " + message,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-    }
-
-    //fungsi ini untuk mendaftarkan data pengguna ke Firebase
-    private void signUp() {
-        Log.d(TAG, "signUp");
-        if (!validateForm()) {
-            return;
-        }
-        loadingProgress.setMessage("Harap menunggu...");
-        loadingProgress.show();
-        //showProgressDialog();
-        String email = txtUsername.getText().toString();
-        String password = txtPassword.getText().toString();
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUser:onComplete:" + task.isSuccessful());
-                        loadingProgress.dismiss();
-                        try{
-                            if (task.isSuccessful()) {
-                                onAuthSuccess(task.getResult().getUser());
-                            } else {
-                                String message = task.getException().getMessage();
-                                AuthResult result = task.getResult();
-                                Toast.makeText(Login.this, "Register failed: " + message,
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        catch (Exception ex){
-                            String message = ex.getLocalizedMessage();
-                            if (message.contains(":")) {
-                                message = message.split(":")[1];
-                            }
-                            Toast.makeText(Login.this, "Register failed: " + message,
+                            Toast.makeText(Login.this, "Gagal masuk: " + message,
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -204,14 +163,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private boolean validateForm() {
         boolean result = true;
         if (TextUtils.isEmpty(txtUsername.getText().toString())) {
-            txtUsername.setError("Harap mengisi Email!");
+            txtUsername.setError("Harap mengisi Alamat Email!");
             result = false;
         } else {
             txtUsername.setError(null);
         }
 
         if (TextUtils.isEmpty(txtPassword.getText().toString())) {
-            txtPassword.setError("Harap mengisi password!");
+            txtPassword.setError("Harap mengisi Kata Sandi!");
             result = false;
         }
         else if(txtPassword.getText().toString().length() < 6){

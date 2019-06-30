@@ -55,7 +55,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
-                android:hint="Full Name">
+                android:hint="Nama">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtName"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginHorizontal="30dp"
-                android:hint="Email">
+                android:hint="Alamat Email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtUsername"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginHorizontal="30dp"
-                android:hint="Password">
+                android:hint="Kata Sandi">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtPassword"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
-                android:text="Register"
+                android:text="Daftar"
                 android:textAllCaps="false"/>
 
             <TextView
@@ -116,7 +116,7 @@
                 android:layout_marginTop="10dp"
                 android:clickable="true"
                 android:text="Sudah punya Akun ?"
-                android:textColor="@color/colorOrange"
+                android:textColor="@color/link"
                 android:textSize="12dp"/>
 
             <TextView
