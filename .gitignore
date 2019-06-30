@@ -34,3 +34,12 @@ output.json
 #NDK
 obj/
 .externalNativeBuild
+app/gradlew
+app/gradlew.bat
+app/gradle/wrapper/gradle-wrapper.jar
+app/gradle/wrapper/gradle-wrapper.properties
+app/src/main/res/drawable/bahasaindonesia.png
+app/src/main/res/drawable/english.png
+app/src/main/res/drawable/ipa.png
+app/src/main/res/drawable/logo.png
+app/src/main/res/drawable/matematika.png
