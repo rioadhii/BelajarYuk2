@@ -3,7 +3,16 @@ package com.esaunggul.doayuk;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.SystemClock;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +26,10 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
     SessionManager session;
     TextView labelAplikasi;
+    String loginMethod = "";
+    private GoogleSignInClient googleSignInClient;
     private long mLastClickTime = 0;
+    public static final String GOOGLE_ACCOUNT = "google_account";
 
     //TextView labelUser;
     @Override
@@ -32,10 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
         // name
         String username = user.get(SessionManager.KEY_USERNAME);
+        String loginMethods = user.get(SessionManager.LOGIN_METHOD);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_client_id))
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+
         labelAplikasi = findViewById(R.id.labelAplikasi);
-        //labelUser = findViewById(R.id.labelUser);
-        //getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //getSupportActionBar().setIcon(R.drawable.ic_smile);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         if(session.isFirstAccess()) {
@@ -63,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.logout) {
+            googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    //On Succesfull signout we navigate the user back to LoginActivity
+                    session.logoutUser();
+                }
+            });
             session.logoutUser();
         }
         return true;

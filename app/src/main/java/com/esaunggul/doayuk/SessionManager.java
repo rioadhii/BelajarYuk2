@@ -20,6 +20,7 @@ public class SessionManager {
     private static final String PREF_NAME = "BelajarKuyPref";
     // All Shared Preferences Keys
     private static final String IS_LOGIN = "IsLoggedIn";
+    public static final String LOGIN_METHOD = "LoginMethod";
     // User name (make variable public to access from outside)
     public static final String KEY_USERNAME = "username";
     public static final String IS_FIRSTACCESS = "IsFirstAccess";
@@ -35,12 +36,13 @@ public class SessionManager {
     /**
      * Create login session
      */
-    public void createLoginSession(String username) {
+    public void createLoginSession(String username, String loginMethod) {
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
         editor.putBoolean(IS_FIRSTACCESS, true);
         // Storing username in pref
         editor.putString(KEY_USERNAME, username);
+        editor.putString(LOGIN_METHOD, loginMethod);
         // commit changes
         editor.commit();
     }
@@ -94,6 +96,9 @@ public class SessionManager {
         // Add new Flag to start new Activity
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+
         // Staring Login Activity
         _context.startActivity(i);
     }
@@ -113,6 +118,9 @@ public class SessionManager {
     }
     public boolean isFirstAccess() {
         return pref.getBoolean(IS_FIRSTACCESS, true);
+    }
+    public String getLoginMethod() {
+        return pref.getString(LOGIN_METHOD, "Basic");
     }
 
 }

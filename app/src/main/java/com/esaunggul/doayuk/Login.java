@@ -1,5 +1,6 @@
 package com.esaunggul.doayuk;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -16,6 +17,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -28,6 +35,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Login extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "LoginActivity";
     private DatabaseReference mDatabase;
+    private SignInButton googleSignInButton;
+    private GoogleSignInClient googleSignInClient;
 
     private TextView labelAplikasi;
     private TextView labelAuthor;
@@ -49,6 +58,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         session = new SessionManager(getApplicationContext());
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+        googleSignInButton = findViewById(R.id.sign_in_button);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signInIntent = googleSignInClient.getSignInIntent();
+                loadingProgress.setMessage("Harap menunggu...");
+                loadingProgress.show();
+                startActivityForResult(signInIntent, 101);
+            }
+        });
 
         labelAplikasi = findViewById(R.id.labelAplikasi);
         labelAuthor = findViewById(R.id.labelAuthor);
@@ -67,42 +90,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         //nambahin method onClick, biar tombolnya bisa diklik
         btnLogin.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
-
-        /*btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(TextUtils.isEmpty(txtUsername.getText())){
-                    txtUsername.setError( "Harap mengisi username!" );
-                }
-                else if (TextUtils.isEmpty(txtPassword.getText())){
-                    txtPassword.setError( "Harap mengisi password!" );
-                }
-                else{
-                    loadingProgress.setMessage("Harap menunggu...");
-                    loadingProgress.show();
-                    new Handler().postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            String username = txtUsername.getText().toString();
-                            String password = txtPassword.getText().toString();
-                            if (password.equals("123456")){
-                                session.createLoginSession(username);
-                                Intent intent = new Intent(Login.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                            else{
-                                Toast.makeText(Login.this, "Username atau Password anda salah.",
-                                        Toast.LENGTH_LONG).show();
-                            }
-                            loadingProgress.dismiss();
-                            //whatever you want just you have to launch overhere.
-                        }
-                    }, 1000);//just mention the time when you want to launch your action
-                }
-            }
-        });*/
     }
 
     //fungsi signin untuk mengkonfirmasi data pengguna yang sudah mendaftar sebelumnya
@@ -194,7 +181,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         writeNewAdmin(user.getUid(), username, user.getEmail());
 
         // Go to MainActivity
-        session.createLoginSession(username);
+        session.createLoginSession(username, "Basic");
         Intent intent = new Intent(Login.this, MainActivity.class);
         startActivity(intent);
         finish();
@@ -253,5 +240,50 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         } else if (i == R.id.btnRegister) {
             signUp();
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        loadingProgress.hide();
+        if (resultCode == Activity.RESULT_OK)
+            switch (requestCode) {
+                case 101:
+                    try {
+                        // The Task returned from this call is always completed, no need to attach
+                        // a listener.
+                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                        GoogleSignInAccount account = task.getResult(ApiException.class);
+                        onLoggedIn(account);
+                    } catch (ApiException e) {
+                        // The ApiException status code indicates the detailed failure reason.
+                        Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+                    }
+                    break;
+            }
+    }
+
+    private void onLoggedIn(GoogleSignInAccount googleSignInAccount) {
+        String userName = googleSignInAccount.getGivenName();
+        session.createLoginSession(userName, "Google");
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        GoogleSignInAccount alreadyloggedAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if (alreadyloggedAccount != null) {
+            onLoggedIn(alreadyloggedAccount);
+        } else {
+            Log.d(TAG, "Not logged in");
+        }
+    }
+
+    public void onBackPressed() {
+        //do nothing
+        finish();
     }
 }
