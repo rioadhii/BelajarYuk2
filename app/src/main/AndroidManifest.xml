@@ -9,8 +9,11 @@
         android:roundIcon="@drawable/logobk2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
         <activity
-            android:name="com.esaunggul.doayuk.MainActivity"
+            android:name=".MainActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +22,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.esaunggul.doayuk.Login"
+            android:name=".Login"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.esaunggul.doayuk.MateriActivity"
+            android:name=".MateriActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.esaunggul.doayuk.DetailMateriActivity"
+        <activity
+            android:name=".DetailMateriActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.esaunggul.doayuk.JadwalActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".JadwalActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
