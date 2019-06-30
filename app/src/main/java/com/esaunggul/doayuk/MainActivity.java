@@ -3,9 +3,9 @@ package com.esaunggul.doayuk;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.SystemClock;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(session.isFirstAccess()) {
             Snackbar snackbar = Snackbar
-                    .make(findViewById(android.R.id.content) , "Hi " + username + ", mari kita mulai Belajar Kuy", Snackbar.LENGTH_LONG);
+                    .make(findViewById(android.R.id.content) , "Assalamu'alaikum " + username + ", mari kita perbanyak do'a", Snackbar.LENGTH_LONG);
 
             snackbar.show();
             session.setIsFirstAccessFalse();
@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Typeface pacificoFont =ResourcesCompat.getFont(this.getApplicationContext(), R.font.pacifico);
+        Typeface arabianFont =ResourcesCompat.getFont(this.getApplicationContext(), R.font.arabianonenightstand);
         //labelUser.setText("Hai, " + username);
         //labelUser.setTypeface(pacificoFont);
-        labelAplikasi.setTypeface(pacificoFont);
+        labelAplikasi.setTypeface(arabianFont);
     }
 
     @Override

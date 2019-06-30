@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "533610789195",
+    "firebase_url": "https://doayuk-esaunggul.firebaseio.com",
+    "project_id": "doayuk-esaunggul",
+    "storage_bucket": "doayuk-esaunggul.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533610789195:android:c925fe883c7aae8b",
+        "android_client_info": {
+          "package_name": "com.esaunggul.doayuk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533610789195-p43h5kmvn0tppqkq7lb6jr4dh99bpr2i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.esaunggul.doayuk",
+            "certificate_hash": "784517cc61a68ce507a3b6cf63a4bc300c78ac03"
+          }
+        },
+        {
+          "client_id": "533610789195-tojssotu85mdknev94kdrs6equgralf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiG_YsO-SBYv7fXC0eEKD2iCcGDw-Bw2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533610789195-tojssotu85mdknev94kdrs6equgralf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

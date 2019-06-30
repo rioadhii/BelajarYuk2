@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/labelAplikasi"
-            android:text="Belajar kuy"
+            android:text="Berdo'a yuk"
             android:textSize="20dp"
             android:layout_below="@id/emojiSmile"
             android:textColor="@color/colorWhite"
@@ -42,7 +42,7 @@
             android:paddingHorizontal="10dp"
             android:minHeight="30dp"
             android:layout_height="wrap_content"
-            android:text="Jadwal Ujian"
+            android:text="Jadwal Sholat"
             android:textAllCaps="false"
             android:layout_centerInParent="true"
             android:layout_below="@id/labelAplikasi"
@@ -66,7 +66,7 @@
         <!-- ROW 1  -->
         <!-- COLUMN 1  -->
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -104,11 +104,11 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <!-- COLUMN 2  -->
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -146,13 +146,13 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
         <!-- ROW 2  -->
         <!-- COLUMN 1  -->
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -193,11 +193,11 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <!-- COLUMN 2  -->
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -235,7 +235,7 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
     </GridLayout>
 
