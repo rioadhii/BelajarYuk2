@@ -97,7 +97,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bahasa Indonesia"
+                    android:text="Doa Sehari Hari"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp" />
@@ -139,7 +139,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Matematika"
+                    android:text="Doa Haji"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp" />
@@ -183,7 +183,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pengetahuan Alam"
+                    android:text="Surat Surat Pendek"
                     android:paddingTop="15dp"
                     android:singleLine="false"
                     android:maxEms="10"
@@ -228,7 +228,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bahasa Inggris"
+                    android:text="Doa Solat Sunnah"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp" />
