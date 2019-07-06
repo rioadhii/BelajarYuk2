@@ -45,8 +45,6 @@ public class MateriActivity extends AppCompatActivity {
     private List<MateriList> materiList;
     private String matapelajaran;
 
-    private FirebaseListAdapter<SubKategori> fbAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,20 +70,20 @@ public class MateriActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         switch (matapelajaran){
-                case "SehariHari":
-                    getDataDoaByKategoriID(0);
-                    break;
-                case "SuratPendek":
-                    getDataDoaByKategoriID(1);
-                    break;
-                case "Sunnah":
-                    getDataDoaByKategoriID(2);
-                    break;
-                case "Haji":
-                    getDataDoaByKategoriID(1);
-                    break;
-                default:
-                    break;
+            case "SehariHari":
+                getDataDoaByKategoriID(0, "Doa Sehari Hari");
+                break;
+            case "SuratPendek":
+                getDataDoaByKategoriID(2, "Juz Amma");
+                break;
+            case "Sunnah":
+                getDataDoaByKategoriID(3, "Doa Solat");
+                break;
+            case "Haji":
+                getDataDoaByKategoriID(1, "Doa Haji");
+                break;
+            default:
+                break;
         }
 
         try {
@@ -95,7 +93,7 @@ public class MateriActivity extends AppCompatActivity {
         }
     }
 
-    private void getDataDoaByKategoriID(int kategori_id){
+    private void getDataDoaByKategoriID(final int kategori_id, final String kategori){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("doa");
 
@@ -108,19 +106,23 @@ public class MateriActivity extends AppCompatActivity {
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     SubKategori mModel = eventSnapshot.getValue(SubKategori.class);
 
-                    int[] covers = new int[]{
-                            R.drawable.lecturer,
-                            R.drawable.islamquran};
+                    int cover = R.drawable.lecturer;
+                    int thumb = R.drawable.islamseharihari;
+
+                    if (kategori_id == 1){ thumb = R.drawable.islamkaabah;}
+                    else if(kategori_id == 2){ thumb = R.drawable.islamquran; }
+                    else if(kategori_id == 3){ thumb = R.drawable.islampath;}
 
                     MateriList data = new MateriList(
                             mModel.getKategori_name(),
                             "Paragraf",
-                            "Bahasa Indonesia",
+                            kategori,
                             "Ide pokok adalah masalah utama ",
-                            covers[1],
-                            covers[0],
+                            thumb,
+                            cover,
                             "BI001",
                             "");
+
 
                     materiList.add(data);
 
