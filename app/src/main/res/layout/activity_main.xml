@@ -92,12 +92,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/bahasaindonesia" />
+                    android:src="@drawable/islamseharihari" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Doa Sehari Hari"
+                    android:text="Doa Sehari-hari"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp" />
@@ -134,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/matematika" />
+                    android:src="@drawable/islamkaabah" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -176,17 +176,15 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ipa" />
+                    android:src="@drawable/islamquran" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Surat Surat Pendek"
-                    android:paddingTop="15dp"
+                    android:text="Juz Amma"
                     android:singleLine="false"
-                    android:maxEms="10"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp" />
@@ -223,7 +221,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/english" />
+                    android:src="@drawable/islampath" />
 
                 <TextView
                     android:layout_width="match_parent"
