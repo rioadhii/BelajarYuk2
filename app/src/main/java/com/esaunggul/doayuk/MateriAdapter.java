@@ -95,13 +95,6 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
             final String judul_materi = materi.getJudul();
             holder.judul.setText(judul_materi);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                holder.konten.setText(Html.fromHtml(materi.getSpoiledKonten(), Html.FROM_HTML_MODE_COMPACT));
-            } else {
-                holder.konten.setText(Html.fromHtml(materi.getSpoiledKonten()));
-            }
-            holder.konten.setText(Html.fromHtml(materi.getKonten()));
-            holder.topik.setText(materi.getTopik());
             holder.kategori.setText(mata_pelajaran);
 
             // loading album cover using Glide library
