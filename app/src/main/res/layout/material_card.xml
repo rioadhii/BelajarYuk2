@@ -28,18 +28,25 @@
                 android:paddingLeft="@dimen/feed_item_padding_left_right"
                 android:paddingRight="@dimen/feed_item_padding_left_right" >
 
-                <ImageView
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
                     android:id="@+id/photo"
                     android:layout_width="@dimen/feed_item_profile_pic"
                     android:layout_height="@dimen/feed_item_profile_pic"
                     android:scaleType="fitCenter" >
                 </ImageView>
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                    <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                        android:id="@+id/linear"
+                    android:layout_toRightOf="@id/photo"
                     android:orientation="vertical"
-                    android:paddingLeft="@dimen/feed_item_profile_info_padd" >
+                    android:paddingLeft="@dimen/feed_item_profile_info_padd"
+                    android:paddingRight="@dimen/feed_item_profile_info_padd">
                     <TextView
                         android:id="@+id/judul"
                         android:layout_width="fill_parent"
@@ -65,6 +72,16 @@
                     </RelativeLayout>
 
                 </LinearLayout>
+
+                    <ImageView
+                    android:id="@+id/selengkapnya"
+                        android:layout_alignParentEnd="true"
+                    android:src="@drawable/lihatselengkapnya"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter" >
+                </ImageView>
+                </RelativeLayout>
             </LinearLayout>
 
             <ImageView
@@ -77,17 +94,6 @@
                 android:layout_marginVertical="5dp"
                 android:layout_marginHorizontal="@dimen/feed_item_status_pad_left_right"/>
 
-            <TextView
-                android:id="@+id/selengkapnya"
-                android:layout_width="fill_parent"
-                android:textStyle="italic"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Selengkapnya ..."
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/feed_item_status_pad_left_right"
-                android:paddingRight="@dimen/feed_item_status_pad_left_right"
-                android:paddingTop="@dimen/feed_item_status_pad_top" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
