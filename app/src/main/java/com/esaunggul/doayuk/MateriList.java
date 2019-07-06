@@ -2,25 +2,24 @@ package com.esaunggul.doayuk;
 
 public class MateriList {
     private String Judul;
-    private String Topik;
     private String Kategori;
-    private String Konten;
     private String SpoiledKonten;
     private String KodeMateri;
     private int Thumbnail;
     private int Cover;
+    private int SubKategori;
+
     public MateriList() {
     }
 
-    public MateriList(String Judul, String Topik, String Kategori, String Konten, int Thumbnail, int Cover, String KodeMateri, String SpoiledKonten) {
+    public MateriList(String Judul, String Kategori, int Thumbnail, int Cover, String KodeMateri, String SpoiledKonten, int SubKategori) {
         this.Judul = Judul;
-        this.Topik = Topik;
         this.Kategori = Kategori;
-        this.Konten = Konten;
         this.Thumbnail = Thumbnail;
         this.Cover = Cover;
         this.KodeMateri = KodeMateri;
         this.SpoiledKonten = SpoiledKonten;
+        this.SubKategori = SubKategori;
     }
 
     public String getSpoiledKonten() {
@@ -38,14 +37,6 @@ public class MateriList {
         this.Judul = Judul;
     }
 
-    public String getTopik() {
-        return Topik;
-    }
-
-    public void setTopik(String Topik) {
-        this.Topik = Topik;
-    }
-
     public String getKategori() {
         return Kategori;
     }
@@ -60,13 +51,6 @@ public class MateriList {
 
     public void setKodeMateri(String KodeMateri) {
         this.KodeMateri = KodeMateri;
-    }
-    public String getKonten() {
-        return Konten;
-    }
-
-    public void setKonten(String Konten) {
-        this.Konten = Konten;
     }
 
     public int getThumbnail() {
@@ -83,5 +67,13 @@ public class MateriList {
 
     public void setCover(int Cover) {
         this.Cover = Cover;
+    }
+
+    public int getSubKategori() {
+        return SubKategori;
+    }
+
+    public void setSubKategori(int SubKategori) {
+        this.SubKategori = Cover;
     }
 }
