@@ -56,7 +56,7 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
         };
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-            public TextView judul, kategori, topik, konten;
+            public TextView judul, kategori, arab, latin, arti;
             public ImageView photo, cover;
 
             public MyViewHolder(View view) {
@@ -65,8 +65,9 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
                 itemView.setOnClickListener(onItemClickListener);
                 judul = (TextView) view.findViewById(R.id.judul);
                 kategori = (TextView) view.findViewById(R.id.kategori);
-                konten = (TextView) view.findViewById(R.id.konten);
-                //cover = (ImageView) view.findViewById(R.id.cover);
+                arab = (TextView) view.findViewById(R.id.txtArab);
+                latin = (TextView) view.findViewById(R.id.txtLatin);
+                arti = (TextView) view.findViewById(R.id.txtArti);
                 photo = (ImageView) view.findViewById(R.id.photo);
             }
         }

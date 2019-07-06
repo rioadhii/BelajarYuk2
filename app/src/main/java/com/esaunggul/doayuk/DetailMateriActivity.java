@@ -26,16 +26,19 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DetailMateriActivity extends AppCompatActivity {
 
+    ProgressDialog loadingProgress;
+
     private String mata_pelajaran;
     private String kategori;
     private String judul;
     private Integer thumbnail;
     private Integer subKategori;
-    ProgressDialog loadingProgress;
-
     private TextView labelKategori;
-    private TextView labelKonten;
     private TextView labelJudul;
+
+    private TextView labelArab;
+    private TextView labelLatin;
+    private TextView labelArti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +65,11 @@ public class DetailMateriActivity extends AppCompatActivity {
         loadingProgress = new ProgressDialog(DetailMateriActivity.this);
 
         labelKategori = findViewById(R.id.kategori);
-        labelKonten = findViewById(R.id.konten);
         labelJudul = findViewById(R.id.judul);
+
+        labelArab = findViewById(R.id.txtArab);
+        labelLatin = findViewById(R.id.txtLatin);
+        labelArti = findViewById(R.id.txtArti);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("doa_detail");
@@ -78,8 +84,11 @@ public class DetailMateriActivity extends AppCompatActivity {
                     DetailDoa mModel = eventSnapshot.getValue(DetailDoa.class);
 
                     labelKategori.setText(kategori);
-                    labelKonten.setText(mModel.getArab());
                     labelJudul.setText(judul);
+
+                    labelArab.setText(mModel.getArab());
+                    labelLatin.setText(mModel.getLatin());
+                    labelArti.setText(mModel.getArti());
 
                     Log.e("DATA" ,""+ mModel.getArab());
                 }
