@@ -71,6 +71,9 @@ public class DetailMateriActivity extends AppCompatActivity {
         labelLatin = findViewById(R.id.txtLatin);
         labelArti = findViewById(R.id.txtArti);
 
+        loadingProgress.setMessage("Harap menunggu...");
+        loadingProgress.show();
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("doa_detail");
 
@@ -99,9 +102,6 @@ public class DetailMateriActivity extends AppCompatActivity {
 
             }
         });
-
-        loadingProgress.setMessage("Harap menunggu...");
-        loadingProgress.show();
 
         try {
             Glide.with(this).load(thumbnail).into((ImageView) findViewById(R.id.photo));

@@ -170,9 +170,17 @@
                         android:layout_height="wrap_content"
                         android:paddingBottom="5dp"
                         android:textSize="13dp"
+                        android:textStyle="bold"
                         android:paddingLeft="@dimen/feed_item_status_pad_left_right"
                         android:paddingRight="@dimen/feed_item_status_pad_left_right"
                         android:paddingTop="@dimen/feed_item_status_pad_top" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Artinya : "
+                        android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/txtArti"
@@ -182,7 +190,7 @@
                         android:textSize="13dp"
                         android:paddingLeft="@dimen/feed_item_status_pad_left_right"
                         android:paddingRight="@dimen/feed_item_status_pad_left_right"
-                        android:paddingTop="@dimen/feed_item_status_pad_top" />
+                        android:textStyle="italic"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
