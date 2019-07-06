@@ -23,4 +23,14 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+    <style name="AppThemeBlueNavy" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorBlueNavy</item>
+        <item name="colorPrimaryDark">@color/colorBlueNavyDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
 </resources>

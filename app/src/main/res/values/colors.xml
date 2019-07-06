@@ -20,4 +20,7 @@
     <color name="bahasaindonesia">#ef4136</color>
     <color name="matematika">#29b298</color>
     <color name="bahasainggirs">#987e31</color>
+
+    <color name="colorBlueNavy">#172437</color>
+    <color name="colorBlueNavyDark">#0f1929</color>
 </resources>

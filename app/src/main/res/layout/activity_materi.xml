@@ -27,42 +27,26 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="30dp">
 
                 <ImageView
                     android:id="@+id/backdrop"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
-                    android:scaleType="fitXY"
-                    app:layout_collapseMode="parallax">
-                </ImageView>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/allahquotes2"
+                    app:layout_collapseMode="parallax"></ImageView>
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#66000000"/>
+                    android:layout_height="match_parent"/>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelActivity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/backdrop_title"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/backdrop_title" />
-
-                    <TextView
-                        android:id="@+id/labelActivityDescription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/backdrop_subtitle"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/backdrop_subtitle" />
 
                 </LinearLayout>
             </RelativeLayout>
