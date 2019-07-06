@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +24,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,32 +75,47 @@ public class MateriActivity extends AppCompatActivity {
         switch (matapelajaran){
                 case "Bahasa Indonesia":
 
-                    /*fbAdapter = new FirebaseListAdapter<SubKategori>(this, SubKategori.class,
-                            R.layout.activity_materi, FirebaseDatabase.getInstance().getReference()) {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference ref = database.getReference("doa");
+
+                    Query queryRef = ref.orderByChild("kategori_id").equalTo(0);
+
+                    queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        protected void populateView(View v, SubKategori model, int position) {
-                            int[] covers = new int[]{
-                                    R.drawable.lecturer,
-                                    R.drawable.bahasaindonesia};
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            //Your Logic here
+                            for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
+                                SubKategori mModel = eventSnapshot.getValue(SubKategori.class);
 
-                            MateriList data = new MateriList(
-                                    model.getKategori_name(),
-                                    "Paragraf",
-                                    "Bahasa Indonesia",
-                                    "Ide pokok adalah masalah utama ",
-                                    covers[1],
-                                    covers[0],
-                                    "BI001",
-                                    "");
+                                int[] covers = new int[]{
+                                        R.drawable.lecturer,
+                                        R.drawable.bahasaindonesia};
 
-                            materiList.add(data);
+                                MateriList data = new MateriList(
+                                        mModel.getKategori_name(),
+                                        "Paragraf",
+                                        "Bahasa Indonesia",
+                                        "Ide pokok adalah masalah utama ",
+                                        covers[1],
+                                        covers[0],
+                                        "BI001",
+                                        "");
+
+                                materiList.add(data);
+
+                                Log.e("DATA" ,""+ mModel.getKategori_name());
+                            }
+
+                            adapter.notifyDataSetChanged();
                         }
-                    };
 
-                    adapter.notifyDataSetChanged();
-*/
-                    prepareMateriBahasaIndonesia();
-                    //displayChatMessages();
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                    //prepareMateriBahasaIndonesia();
                     break;
                 case "Pengetahuan Alam":
                     prepareMateriPengetahuanAlam();
