@@ -30,7 +30,7 @@
             android:theme="@style/AppThemeBlueNavy" />
         <activity
             android:name=".DetailMateriActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppThemeYellow" />
         <activity
             android:name=".JadwalActivity"
             android:theme="@style/AppTheme.NoActionBar" />

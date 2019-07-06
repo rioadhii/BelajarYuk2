@@ -26,7 +26,6 @@ public class DetailMateriActivity extends AppCompatActivity {
     private Integer thumbnail;
     private Integer cover;
 
-    private TextView labelActivity;
     private TextView labelKategori;
     private TextView labelTopik;
     private TextView labelKonten;
@@ -52,10 +51,8 @@ public class DetailMateriActivity extends AppCompatActivity {
 
         labelKategori = findViewById(R.id.kategori);
         labelTopik = findViewById(R.id.topik);
-        labelActivity = findViewById(R.id.labelActivity);
         labelKonten = findViewById(R.id.konten);
 
-        labelActivity.setText(judul_materi);
         labelKategori.setText(mata_pelajaran);
         labelTopik.setText(topik);
 
@@ -72,13 +69,10 @@ public class DetailMateriActivity extends AppCompatActivity {
         }
 
         try {
-            Glide.with(this).load(cover).into((ImageView) findViewById(R.id.backdrop));
+            //Glide.with(this).load(cover).into((ImageView) findViewById(getDrawable(r.)));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        Typeface pacificoFont = ResourcesCompat.getFont(this.getApplicationContext(), R.font.pacifico);
-        labelActivity.setTypeface(pacificoFont);
     }
 
     @Override
@@ -130,16 +124,8 @@ public class DetailMateriActivity extends AppCompatActivity {
 
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle("Detail Materi");
-                    isShow = true;
-                } else if (isShow) {
-                    collapsingToolbar.setTitle(" ");
-                    isShow = false;
-                }
+                collapsingToolbar.setTitle(" ");
+                isShow = false;
             }
         });
     }
