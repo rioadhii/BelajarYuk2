@@ -68,7 +68,7 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
                 kategori = (TextView) view.findViewById(R.id.kategori);
                 topik = (TextView) view.findViewById(R.id.topik);
                 konten = (TextView) view.findViewById(R.id.konten);
-                cover = (ImageView) view.findViewById(R.id.cover);
+                //cover = (ImageView) view.findViewById(R.id.cover);
                 photo = (ImageView) view.findViewById(R.id.photo);
             }
         }
@@ -101,14 +101,13 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
             Glide.with(mContext).load(materi.getThumbnail()).into(holder.photo);
 
             int isZeroCover = materi.getCover();
-            if (isZeroCover == 0){
-                holder.cover.setVisibility(View.INVISIBLE);
-            }
-            else
-            {
-                holder.cover.setVisibility(View.INVISIBLE);
-            }
-            Glide.with(mContext).load(materi.getThumbnail()).into(holder.photo);
+            //if (isZeroCover == 0){
+                //holder.cover.setVisibility(View.INVISIBLE);
+            //}
+            //else
+            //{
+                //holder.cover.setVisibility(View.INVISIBLE);
+            //}
         }
 
         @Override
