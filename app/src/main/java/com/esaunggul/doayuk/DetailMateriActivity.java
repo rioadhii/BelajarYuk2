@@ -11,26 +11,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class DetailMateriActivity extends AppCompatActivity {
 
-    private String mata_pelajaran;
-    private String kode_materi;
-    private String judul_materi;
-    private String topik;
-    private String konten;
-    private Integer thumbnail;
-    private Integer cover;
     ProgressDialog loadingProgress;
 
+    private String mata_pelajaran;
+    private String kategori;
+    private String judul;
+    private Integer thumbnail;
+    private Integer subKategori;
     private TextView labelKategori;
-    private TextView labelTopik;
-    private TextView labelKonten;
+    private TextView labelJudul;
+
+    private TextView labelArab;
+    private TextView labelLatin;
+    private TextView labelArti;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,21 +52,54 @@ public class DetailMateriActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+
         mata_pelajaran = extras.getString("PARAM_PELAJARAN");
-        kode_materi = extras.getString("PARAM_KODE_MATERI");
-        judul_materi = extras.getString("PARAM_JUDUL_MATERI");
-        topik = extras.getString("PARAM_TOPIK");
-        cover = extras.getInt("PARAM_COVER");
         thumbnail = extras.getInt("PARAM_THUMBNAIL");
-        konten = extras.getString("PARAM_KONTEN");
+
+        subKategori = extras.getInt("PARAM_SUBKATEGORI");
+        kategori = extras.getString("PARAM_KATEGORI");
+        judul = extras.getString("PARAM_JUDUL");
+
+        Log.e("SUB KATEGORI" ,""+ subKategori);
+
         loadingProgress = new ProgressDialog(DetailMateriActivity.this);
 
         labelKategori = findViewById(R.id.kategori);
-        labelTopik = findViewById(R.id.topik);
-        labelKonten = findViewById(R.id.konten);
+        labelJudul = findViewById(R.id.judul);
 
-        labelKategori.setText(mata_pelajaran);
-        labelTopik.setText(topik);
+        labelArab = findViewById(R.id.txtArab);
+        labelLatin = findViewById(R.id.txtLatin);
+        labelArti = findViewById(R.id.txtArti);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("doa_detail");
+
+        Query queryRef = ref.orderByChild("sub_kategori_id").equalTo(subKategori);
+
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Your Logic here
+                for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
+                    DetailDoa mModel = eventSnapshot.getValue(DetailDoa.class);
+
+                    labelKategori.setText(kategori);
+                    labelJudul.setText(judul);
+
+                    labelArab.setText(mModel.getArab());
+                    labelLatin.setText(mModel.getLatin());
+                    labelArti.setText(mModel.getArti());
+
+                    Log.e("DATA" ,""+ mModel.getArab());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         loadingProgress.setMessage("Harap menunggu...");
         loadingProgress.show();
 
