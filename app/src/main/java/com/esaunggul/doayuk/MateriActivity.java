@@ -1,5 +1,6 @@
 package com.esaunggul.doayuk;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -44,6 +45,7 @@ public class MateriActivity extends AppCompatActivity {
     private MateriAdapter adapter;
     private List<MateriList> materiList;
     private String matapelajaran;
+    ProgressDialog loadingProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class MateriActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        loadingProgress = new ProgressDialog(MateriActivity.this);
 
         initCollapsingToolbar();
 
@@ -68,18 +71,19 @@ public class MateriActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-
+        loadingProgress.setMessage("Harap menunggu...");
+        loadingProgress.show();
         switch (matapelajaran){
-            case "SehariHari":
+            case "Doa Sehari Hari":
                 getDataDoaByKategoriID(0, "Doa Sehari Hari");
                 break;
-            case "SuratPendek":
+            case "Juz Amma":
                 getDataDoaByKategoriID(2, "Juz Amma");
                 break;
-            case "Sunnah":
-                getDataDoaByKategoriID(3, "Doa Solat");
+            case "Sholawat":
+                getDataDoaByKategoriID(3, "Sholawat");
                 break;
-            case "Haji":
+            case "Doa Haji":
                 getDataDoaByKategoriID(1, "Doa Haji");
                 break;
             default:
@@ -128,7 +132,7 @@ public class MateriActivity extends AppCompatActivity {
 
                     Log.e("DATA" ,""+ mModel.getKategori_name());
                 }
-
+                loadingProgress.dismiss();
                 adapter.notifyDataSetChanged();
             }
 
