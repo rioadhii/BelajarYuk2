@@ -22,7 +22,7 @@
                 android:layout_height="@dimen/album_cover_height"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
-                android:src="@drawable/bahasaindonesia"
+                android:src="@drawable/islamkaabah"
                 android:scaleType="fitXY" />
 
             <TextView

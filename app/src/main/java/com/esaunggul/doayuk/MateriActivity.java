@@ -2,6 +2,7 @@ package com.esaunggul.doayuk;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 
@@ -10,6 +11,8 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -20,6 +23,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,8 +44,6 @@ public class MateriActivity extends AppCompatActivity {
     private MateriAdapter adapter;
     private List<MateriList> materiList;
     private String matapelajaran;
-    private TextView labelActivity;
-    private TextView labelActivityDescription;
 
     private FirebaseListAdapter<SubKategori> fbAdapter;
 
@@ -56,11 +59,7 @@ public class MateriActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initCollapsingToolbar();
-        labelActivity = findViewById(R.id.labelActivity);
-        labelActivityDescription = findViewById(R.id.labelActivityDescription);
-        Typeface pacificoFont =ResourcesCompat.getFont(this.getApplicationContext(), R.font.pacifico);
-        labelActivity.setTypeface(pacificoFont);
-        labelActivityDescription.setTypeface(pacificoFont);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         materiList = new ArrayList<>();
@@ -90,7 +89,7 @@ public class MateriActivity extends AppCompatActivity {
         }
 
         try {
-            Glide.with(this).load(R.drawable.openbooksm).into((ImageView) findViewById(R.id.backdrop));
+  //          Glide.with(this).load(R.drawable.allahquotes).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,7 +110,7 @@ public class MateriActivity extends AppCompatActivity {
 
                     int[] covers = new int[]{
                             R.drawable.lecturer,
-                            R.drawable.bahasaindonesia};
+                            R.drawable.islamquran};
 
                     MateriList data = new MateriList(
                             mModel.getKategori_name(),
@@ -185,7 +184,7 @@ public class MateriActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbar.setTitle(matapelajaran);
+                    collapsingToolbar.setTitle(" ");
                     isShow = true;
                 } else if (isShow) {
                     collapsingToolbar.setTitle(" ");
