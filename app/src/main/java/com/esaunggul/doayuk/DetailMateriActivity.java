@@ -1,5 +1,6 @@
 package com.esaunggul.doayuk;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -25,6 +26,7 @@ public class DetailMateriActivity extends AppCompatActivity {
     private String konten;
     private Integer thumbnail;
     private Integer cover;
+    ProgressDialog loadingProgress;
 
     private TextView labelKategori;
     private TextView labelTopik;
@@ -48,6 +50,7 @@ public class DetailMateriActivity extends AppCompatActivity {
         cover = extras.getInt("PARAM_COVER");
         thumbnail = extras.getInt("PARAM_THUMBNAIL");
         konten = extras.getString("PARAM_KONTEN");
+        loadingProgress = new ProgressDialog(DetailMateriActivity.this);
 
         labelKategori = findViewById(R.id.kategori);
         labelTopik = findViewById(R.id.topik);
@@ -55,7 +58,8 @@ public class DetailMateriActivity extends AppCompatActivity {
 
         labelKategori.setText(mata_pelajaran);
         labelTopik.setText(topik);
-
+        loadingProgress.setMessage("Harap menunggu...");
+        loadingProgress.show();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             labelKonten.setText(Html.fromHtml(konten, Html.FROM_HTML_MODE_COMPACT));
         } else {
@@ -68,11 +72,7 @@ public class DetailMateriActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        try {
-            //Glide.with(this).load(cover).into((ImageView) findViewById(getDrawable(r.)));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        loadingProgress.dismiss();
     }
 
     @Override

@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "SehariHari");
+        extras.putString("PARAM_PELAJARAN", "Doa Sehari Hari");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "Haji");
+        extras.putString("PARAM_PELAJARAN", "Doa Haji");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "SuratPendek");
+        extras.putString("PARAM_PELAJARAN", "Juz Amma");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "Sunnah");
+        extras.putString("PARAM_PELAJARAN", "Sholawat");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
