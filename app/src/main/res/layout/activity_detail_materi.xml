@@ -116,6 +116,13 @@
                             android:orientation="vertical"
                             android:paddingLeft="@dimen/feed_item_profile_info_padd" >
 
+                            <TextView
+                                android:id="@+id/judul"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/feed_item_profile_name"
+                                android:textStyle="bold" />
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -132,18 +139,6 @@
                                     android:textColor="@color/colorWhite"
                                     android:textSize="@dimen/feed_item_timestamp" />
 
-                                <TextView
-                                    android:id="@+id/topik"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@id/kategori"
-                                    android:background="@drawable/rounded_corner_orange"
-                                    android:paddingVertical="3dp"
-                                    android:paddingHorizontal="10dp"
-                                    android:layout_marginTop="5dp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="@dimen/feed_item_timestamp" />
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -158,6 +153,7 @@
                         android:layout_gravity="center"
                         android:layout_marginVertical="5dp"
                         android:layout_marginHorizontal="@dimen/feed_item_status_pad_left_right"/>
+
                     <TextView
                         android:id="@+id/konten"
                         android:layout_width="fill_parent"

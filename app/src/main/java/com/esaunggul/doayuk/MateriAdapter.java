@@ -35,20 +35,20 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
                 MateriList materi = materiLists.get(position);
 
                 final String mata_pelajaran = materi.getKategori();
-                final String kode_materi = materi.getKodeMateri();
-                final String judul_materi = materi.getJudul();
                 final Integer Thumbnail = materi.getThumbnail();
-                final Integer Cover = materi.getCover();
                 final Integer SubKategori = materi.getSubKategori();
+                final String Kategori = materi.getKategori();
+                final String Judul = materi.getJudul();
 
                 Intent intent = new Intent(mContext, DetailMateriActivity.class);
                 Bundle extras = new Bundle();
+
                 extras.putString("PARAM_PELAJARAN", mata_pelajaran);
-                extras.putString("PARAM_KODE_MATERI", kode_materi);
-                extras.putString("PARAM_JUDUL_MATERI", judul_materi);
-                extras.putString("PARAM_TOPIK", "");
                 extras.putInt("PARAM_THUMBNAIL", Thumbnail);
-                extras.putInt("PARAM_COVER", Cover);
+
+                extras.putString("PARAM_KATEGORI", Kategori);
+                extras.putString("PARAM_JUDUL", Judul);
+                extras.putInt("PARAM_SUBKATEGORI", SubKategori);
 
                 intent.putExtras(extras);
                 mContext.startActivity(intent);
@@ -65,7 +65,6 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
                 itemView.setOnClickListener(onItemClickListener);
                 judul = (TextView) view.findViewById(R.id.judul);
                 kategori = (TextView) view.findViewById(R.id.kategori);
-                topik = (TextView) view.findViewById(R.id.topik);
                 konten = (TextView) view.findViewById(R.id.konten);
                 cover = (ImageView) view.findViewById(R.id.cover);
                 photo = (ImageView) view.findViewById(R.id.photo);
