@@ -178,6 +178,13 @@ public class MateriActivity extends AppCompatActivity {
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
         appBarLayout.setExpanded(true);
 
+       AppBarLayout.LayoutParams params =
+               (AppBarLayout.LayoutParams) collapsingToolbar.getLayoutParams();
+
+       params.setScrollFlags(0);
+
+       collapsingToolbar.setLayoutParams(params);
+
         // hiding & showing the title when toolbar expanded & collapsed
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
