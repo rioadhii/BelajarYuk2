@@ -119,13 +119,12 @@ public class MateriActivity extends AppCompatActivity {
 
                     MateriList data = new MateriList(
                             mModel.getKategori_name(),
-                            "Paragraf",
                             kategori,
-                            "Ide pokok adalah masalah utama ",
                             thumb,
                             cover,
                             "BI001",
-                            "");
+                            "",
+                            mModel.getSub_kategori_id());
 
 
                     materiList.add(data);

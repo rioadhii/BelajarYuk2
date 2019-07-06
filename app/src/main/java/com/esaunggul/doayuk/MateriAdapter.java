@@ -19,8 +19,8 @@ import java.util.List;
 
 public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHolder> {
 
-        private Context mContext;
-        private List<MateriList> materiLists;
+    private Context mContext;
+    private List<MateriList> materiLists;
     private long mLastClickTime = 0;
     private View.OnClickListener onItemClickListener = new View.OnClickListener() {
             @Override
@@ -33,23 +33,22 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.MyViewHold
                 RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
                 int position = viewHolder.getAdapterPosition();
                 MateriList materi = materiLists.get(position);
+
                 final String mata_pelajaran = materi.getKategori();
                 final String kode_materi = materi.getKodeMateri();
                 final String judul_materi = materi.getJudul();
-                final String topik = materi.getTopik();
                 final Integer Thumbnail = materi.getThumbnail();
                 final Integer Cover = materi.getCover();
-                final String konten = materi.getSpoiledKonten();
+                final Integer SubKategori = materi.getSubKategori();
 
                 Intent intent = new Intent(mContext, DetailMateriActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("PARAM_PELAJARAN", mata_pelajaran);
                 extras.putString("PARAM_KODE_MATERI", kode_materi);
                 extras.putString("PARAM_JUDUL_MATERI", judul_materi);
-                extras.putString("PARAM_TOPIK", topik);
+                extras.putString("PARAM_TOPIK", "");
                 extras.putInt("PARAM_THUMBNAIL", Thumbnail);
                 extras.putInt("PARAM_COVER", Cover);
-                extras.putString("PARAM_KONTEN", konten);
 
                 intent.putExtras(extras);
                 mContext.startActivity(intent);
