@@ -33,7 +33,7 @@
             android:theme="@style/AppThemeYellow" />
         <activity
             android:name=".JadwalActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppThemeGrey" />
     </application>
 
 </manifest>

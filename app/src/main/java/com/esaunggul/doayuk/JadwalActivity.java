@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide;
 import cn.refactor.lib.colordialog.ColorDialog;
 
 public class JadwalActivity extends AppCompatActivity {
-    private TextView labelActivity;
 
     private long mLastClickTime = 0;
 
@@ -32,11 +31,8 @@ public class JadwalActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initCollapsingToolbar();
-        labelActivity = findViewById(R.id.labelActivity);
-        Typeface arabianFont = ResourcesCompat.getFont(this.getApplicationContext(), R.font.arabianonenightstand);
-        labelActivity.setTypeface(arabianFont);
         try {
-            Glide.with(this).load(R.drawable.sujood).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.sholat).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }

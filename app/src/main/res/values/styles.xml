@@ -41,4 +41,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeGrey" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">#cfd8dc</item>
+        <item name="colorPrimaryDark">#9ea7aa</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 </resources>
