@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onBahasaIndonesiaClick(View view){
+    public void onSehariHariClick(View view){
         // mis-clicking prevention, using threshold of 1000 ms
         if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
             return;
@@ -101,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "Bahasa Indonesia");
+        extras.putString("PARAM_PELAJARAN", "SehariHari");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
 
-    public void onMatematikaClick(View view){
+    public void onHajiClick(View view){
         // mis-clicking prevention, using threshold of 1000 ms
         if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
             return;
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "Matematika");
+        extras.putString("PARAM_PELAJARAN", "Haji");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         view.getContext().startActivity(intent);
     }
 
-    public void onIPAClick(View view){
+    public void onSuratPendekClick(View view){
         // mis-clicking prevention, using threshold of 1000 ms
         if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
             return;
@@ -143,12 +143,12 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "Pengetahuan Alam");
+        extras.putString("PARAM_PELAJARAN", "SuratPendek");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
 
-    public void onBahasaInggrisClick(View view){
+    public void onSunnahClick(View view){
         // mis-clicking prevention, using threshold of 1000 ms
         if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
             return;
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         // do your magic here
         Intent intent = new Intent(view.getContext(), MateriActivity.class);
         Bundle extras = new Bundle();
-        extras.putString("PARAM_PELAJARAN", "Bahasa Inggris");
+        extras.putString("PARAM_PELAJARAN", "Sunnah");
         intent.putExtras(extras);
         view.getContext().startActivity(intent);
     }
