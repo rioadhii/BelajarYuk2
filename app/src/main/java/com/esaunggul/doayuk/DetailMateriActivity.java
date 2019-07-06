@@ -63,16 +63,14 @@ public class DetailMateriActivity extends AppCompatActivity {
         Log.e("SUB KATEGORI" ,""+ subKategori);
 
         loadingProgress = new ProgressDialog(DetailMateriActivity.this);
-
+        loadingProgress.setMessage("Harap menunggu...");
+        loadingProgress.show();
         labelKategori = findViewById(R.id.kategori);
         labelJudul = findViewById(R.id.judul);
 
         labelArab = findViewById(R.id.txtArab);
         labelLatin = findViewById(R.id.txtLatin);
         labelArti = findViewById(R.id.txtArti);
-
-        loadingProgress.setMessage("Harap menunggu...");
-        loadingProgress.show();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("doa_detail");
@@ -94,12 +92,13 @@ public class DetailMateriActivity extends AppCompatActivity {
                     labelArti.setText(mModel.getArti());
 
                     Log.e("DATA" ,""+ mModel.getArab());
+                    loadingProgress.dismiss();
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                loadingProgress.dismiss();
             }
         });
 
@@ -108,8 +107,6 @@ public class DetailMateriActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        loadingProgress.dismiss();
     }
 
     @Override
