@@ -39,10 +39,6 @@ public class MateriActivity extends AppCompatActivity {
     private MateriAdapter adapter;
     private List<MateriList> materiList;
     private String matapelajaran;
-    private TextView labelActivity;
-    private TextView labelActivityDescription;
-
-    private FirebaseListAdapter<SubKategori> fbAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +52,6 @@ public class MateriActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initCollapsingToolbar();
-        labelActivity = findViewById(R.id.labelActivity);
-        labelActivityDescription = findViewById(R.id.labelActivityDescription);
-        Typeface pacificoFont =ResourcesCompat.getFont(this.getApplicationContext(), R.font.pacifico);
-        labelActivity.setTypeface(pacificoFont);
-        labelActivityDescription.setTypeface(pacificoFont);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         materiList = new ArrayList<>();
