@@ -60,11 +60,6 @@ public class DetailMateriActivity extends AppCompatActivity {
         labelTopik.setText(topik);
         loadingProgress.setMessage("Harap menunggu...");
         loadingProgress.show();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            labelKonten.setText(Html.fromHtml(konten, Html.FROM_HTML_MODE_COMPACT));
-        } else {
-            labelKonten.setText(Html.fromHtml(konten));
-        }
 
         try {
             Glide.with(this).load(thumbnail).into((ImageView) findViewById(R.id.photo));
