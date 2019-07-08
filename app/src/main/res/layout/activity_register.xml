@@ -61,7 +61,8 @@
                     android:id="@+id/txtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textSize="12dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +77,8 @@
                     android:id="@+id/txtUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textSize="12dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +93,8 @@
                     android:id="@+id/txtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textSize="12dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,6 +131,7 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="bottom"
                 android:text="by RnB DevTeam"
+                android:textSize="10dp"
                 android:textAlignment="center" />
         </LinearLayout>
 

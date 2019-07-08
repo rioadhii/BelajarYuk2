@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +16,7 @@
         android:layout_weight="2.5"
         android:background="@drawable/half_circle"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="150dp">
 
         <ImageView
             android:id="@+id/emojiSmile"
@@ -30,6 +34,7 @@
             android:layout_below="@id/emojiSmile"
             android:textColor="@color/colorWhite"
             android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -51,10 +56,11 @@
             android:background="@color/colorOrange"/>
     </RelativeLayout>
 
+
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/mainGrid"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="7"
         app:alignmentMode="alignMargins"
         app:columnCount="2"
@@ -67,7 +73,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
@@ -89,7 +95,7 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/islamseharihari" />
 
@@ -99,7 +105,7 @@
                     android:text="Doa Sehari-hari"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14dp" />
+                    android:textSize="12dp" />
 
             </LinearLayout>
 
@@ -109,7 +115,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
@@ -131,7 +137,7 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/islamkaabah" />
 
@@ -141,7 +147,7 @@
                     android:text="Doa Haji"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14dp" />
+                    android:textSize="12dp" />
 
             </LinearLayout>
 
@@ -153,7 +159,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
@@ -175,7 +181,7 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/islamquran" />
 
@@ -186,7 +192,7 @@
                     android:singleLine="false"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14dp" />
+                    android:textSize="12dp" />
 
             </LinearLayout>
 
@@ -196,7 +202,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_rowWeight="1"
             app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
@@ -218,7 +224,7 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/islampath" />
 
@@ -228,7 +234,7 @@
                     android:text="Sholawat"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14dp" />
+                    android:textSize="12dp" />
 
             </LinearLayout>
 
@@ -238,4 +244,4 @@
 
 
 
-</LinearLayout>
+</LinearLayout></ScrollView>

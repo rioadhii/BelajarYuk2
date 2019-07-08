@@ -59,7 +59,8 @@
                     android:id="@+id/txtUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textSize="12dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,6 +74,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtPassword"
                     android:layout_width="match_parent"
+                    android:textSize="12dp"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
 
@@ -119,6 +121,7 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="bottom"
                 android:text="by RnB DevTeam"
+                android:textSize="10dp"
                 android:textAlignment="center" />
         </LinearLayout>
 
