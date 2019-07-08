@@ -110,7 +110,7 @@ public class MateriActivity extends AppCompatActivity {
                 for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
                     SubKategori mModel = eventSnapshot.getValue(SubKategori.class);
 
-                    int cover = R.drawable.lecturer;
+                    int cover = R.drawable.basmallahtext;
                     int thumb = R.drawable.islamseharihari;
 
                     if (kategori_id == 1){ thumb = R.drawable.islamkaabah;}

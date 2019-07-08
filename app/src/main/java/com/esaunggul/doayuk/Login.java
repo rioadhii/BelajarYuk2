@@ -59,6 +59,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         googleSignInButton = findViewById(R.id.sign_in_button);
+        googleSignInButton.setTextSize(10);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
