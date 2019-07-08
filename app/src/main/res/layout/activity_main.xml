@@ -14,15 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-
-
         <ImageView
             android:id="@+id/emojiSmile"
             android:paddingTop="20dp"
             android:layout_width="70dp"
             android:src="@drawable/ic_smile"
             android:layout_centerHorizontal="true"
-            android:layout_height="70dp" />
+            android:layout_height="50dp" />
 
 
         <TextView
@@ -37,12 +35,13 @@
 
         <Button
             android:id="@+id/btnJadwal"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:paddingHorizontal="10dp"
             android:minHeight="30dp"
             android:layout_height="wrap_content"
             android:text="Jadwal Sholat"
+            android:textSize="12dp"
             android:textAllCaps="false"
             android:layout_centerInParent="true"
             android:layout_below="@id/labelAplikasi"
@@ -52,16 +51,16 @@
             android:background="@color/colorOrange"/>
     </RelativeLayout>
 
-    <GridLayout
+    <androidx.gridlayout.widget.GridLayout
         android:id="@+id/mainGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:columnOrderPreserved="false"
+        android:layout_weight="7"
+        app:alignmentMode="alignMargins"
+        app:columnCount="2"
+        app:columnOrderPreserved="false"
         android:padding="14dp"
-        android:rowCount="2">
+        app:rowCount="2">
 
         <!-- ROW 1  -->
         <!-- COLUMN 1  -->
@@ -69,8 +68,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -100,7 +99,7 @@
                     android:text="Doa Sehari-hari"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
             </LinearLayout>
 
@@ -111,8 +110,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -142,7 +141,7 @@
                     android:text="Doa Haji"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
             </LinearLayout>
 
@@ -155,8 +154,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -187,7 +186,7 @@
                     android:singleLine="false"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
             </LinearLayout>
 
@@ -198,8 +197,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
@@ -229,13 +228,13 @@
                     android:text="Sholawat"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
-                    android:textSize="14sp" />
+                    android:textSize="14dp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
-    </GridLayout>
+    </androidx.gridlayout.widget.GridLayout>
 
 
 
